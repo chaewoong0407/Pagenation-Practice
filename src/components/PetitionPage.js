@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Pagenation from "./common/Pagenation";
 
 const PetitionPage = () => {
   const getPeitions = () => {
@@ -75,6 +76,8 @@ const PetitionPage = () => {
           ))}
         </tbody>
       </table>
+
+      <Pagenation itemsCount={count} pageSize={petitions.pageSize} />
     </>
   );
 };
