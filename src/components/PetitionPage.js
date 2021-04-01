@@ -47,6 +47,7 @@ const PetitionPage = () => {
   const [petitions, setPetitions] = useState({
     data: getPeitions(),
     pageSize: 5,
+    currentPage: 1,
   });
 
   const { length: count } = petitions.data;
