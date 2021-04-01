@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { paginate } from "../utils/paginate";
 import Pagenation from "./common/Pagenation";
 
 const PetitionPage = () => {
@@ -46,9 +47,16 @@ const PetitionPage = () => {
 
   const [petitions, setPetitions] = useState({
     data: getPeitions(),
-    pageSize: 5,
+    pageSize: 3,
     currentPage: 1,
   });
+
+  const handlePageChange = (page) => {
+    setPetitions({ ...petitions, currentPage: page });
+  };
+
+  const { data, pageSize, currentPage } = petitions;
+  const pagedPetitions = paginate(data, currentPage, pageSize);
 
   const { length: count } = petitions.data;
   if (count === 0) return <div>청원이 없습니다.</div>;
@@ -78,7 +86,12 @@ const PetitionPage = () => {
         </tbody>
       </table>
 
-      <Pagenation itemsCount={count} pageSize={petitions.pageSize} />
+      <Pagenation
+        itemsCount={count}
+        pageSize={petitions.pageSize}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 };
