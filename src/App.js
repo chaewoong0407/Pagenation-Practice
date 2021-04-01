@@ -1,8 +1,8 @@
-import React from 'react';
-import PetitionPage from './components/PetitionPage';
+import React from "react";
+import PetitionPage from "./components/PetitionPage";
 
 const App = () => {
-  return <PetitionPage/>;
-}
+  return <PetitionPage />;
+};
 
-export default App
+export default App;

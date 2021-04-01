@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const PetitionPage = () => {
   const getPeitions = () => {
@@ -33,9 +33,50 @@ const PetitionPage = () => {
         agreed: 20,
         end_at: "2020.11.05",
       },
+      {
+        id: 16,
+        title: "전공캠프 횟수를 늘려주세요!!",
+        agreed: 20,
+        end_at: "2020.11.05",
+      },
     ];
+    return petitions;
   };
-  return <div>ss</div>;
+
+  const [petitions, setPetitions] = useState({
+    data: getPeitions(),
+    pageSize: 5,
+  });
+
+  const { length: count } = petitions.data;
+  if (count === 0) return <div>청원이 없습니다.</div>;
+
+  return (
+    <>
+      <div>{count} 개의 영화 정보가 있습니다.</div>
+
+      <table className="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Release</th>
+          </tr>
+        </thead>
+        <tbody>
+          {petitions.data.map((petition) => (
+            <tr key={petition.id}>
+              <td>{petition.id}</td>
+              <td>{petition.title}</td>
+              <td>{petition.agreed}</td>
+              <td>{petition.end_at}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
 };
 
 export default PetitionPage;
