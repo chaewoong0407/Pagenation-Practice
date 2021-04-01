@@ -1,11 +1,8 @@
-import React from 'react'
+import React from 'react';
+import PetitionPage from './components/PetitionPage';
 
 const App = () => {
-  return (
-    <div>
-      dd
-    </div>
-  )
+  return <PetitionPage/>;
 }
 
 export default App
